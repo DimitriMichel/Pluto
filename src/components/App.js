@@ -24,14 +24,14 @@ class App extends React.Component {
 
     // Fetch list of members of The U.S. House of Representatives then searches for a specific member and crp_id
     const representatives = await house.get("", {});
-    representatives.data.results[0].members.forEach(member => {
-      if (member.first_name + " " + member.last_name === term) {
-        console.log(member);
-        crp_id = member.crp_id;
-        console.log(crp_id);
-      }
-    });
+    function isRepresentative(representative){
+      return `${representative.first_name} ${representative.last_name}` === term;
+
+    }
+
+    console.log(representatives.data.results[0].members.find(isRepresentative));
   };
+
   render() {
     return (
       <div>

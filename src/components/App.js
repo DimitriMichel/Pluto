@@ -32,6 +32,7 @@ class App extends React.Component {
       listMember =>
         (listMember.full_name = `${listMember.first_name} ${listMember.last_name}`)
     );
+    console.log(senatorsList);
 
     // Find specific senator from search term and set crp_id
     const senatorSearch = new Fuse(
@@ -39,7 +40,7 @@ class App extends React.Component {
       options
     );
     const senatorSearchResult = senatorSearch.search(`${term}`);
-
+    console.log(senatorSearchResult);
     if (senatorSearchResult.length > 0) crp_id = senatorSearchResult[0].crp_id;
 
     // Fetch list of members of The U.S. House of Representatives and create full_name property for fuzzy search
@@ -60,21 +61,23 @@ class App extends React.Component {
     if (representativesSearchResult.length > 0)
       crp_id = representativesSearchResult[0].crp_id;
 
-    // Obtain top contribution data from searched politician by (crp_id)
+    // Obtain top ten contributor data, financial summary, personal assets and from returned politician
     const topContributions = await finance.get("/?method=candContrib", {
       params: {
         cid: crp_id
       }
     });
-    console.log(topContributions);
 
-    // Obtain financial summary data from searched politician by (crp_id)
     const financialSummary = await finance.get("/?method=candSummary", {
       params: {
         cid: crp_id
       }
     });
-    console.log(financialSummary);
+    const personalAssets = await finance.get("/?method=memPFDprofile", {
+      params: {
+        cid: crp_id
+      }
+    });
   };
 
   render() {

@@ -3,6 +3,7 @@ import SearchBar from "./SearchBar";
 import house from "../API/house";
 import senate from "../API/senate";
 import { Layout, Card } from "antd";
+import Fuse from "fuse.js";
 
 const { Content } = Layout;
 
@@ -15,21 +16,49 @@ class App extends React.Component {
     let contribution;
     let contributionTotal;
 
-    // Fetch list of members of The U.S. Senate then searches for a specific member and crp_id
-    const senators = await senate.get("", {});
-    function isSenator(senator){
-      return `${senator.first_name} ${senator.last_name}` === term;
-    }
-    console.log(senators.data.results[0].members.find(isSenator));
+    // Fuzzy search configurations
+    const options = {
+      shouldSort: true,
+      threshold: 0.4,
+      location: 0,
+      distance: 100,
+      maxPatternLength: 32,
+      minMatchCharLength: 1,
+      keys: [
+        "full_name"
+      ]
+    };
 
-    // Fetch list of members of The U.S. House of Representatives then searches for a specific member and crp_id
-    const representatives = await house.get("", {});
-    function isRepresentative(representative){
-      return `${representative.first_name} ${representative.last_name}` === term;
+    // Fetch list of members of The U.S. Senate and create full_name property for fuzzy search
+    const senatorsList = await senate.get("", {});
+    senatorsList.data.results[0].members.forEach(
+      listMember =>
+        (listMember.full_name = `${listMember.first_name} ${listMember.last_name}`)
+    );
 
-    }
+    // Find specific senator from search term and set crp_id
+    const senatorSearch = new Fuse( senatorsList.data.results[0].members, options);
+    const senatorSearchResult = senatorSearch.search(`${term}`);
 
-    console.log(representatives.data.results[0].members.find(isRepresentative));
+    if (senatorSearchResult.length > 0)
+      crp_id = senatorSearchResult[0].crp_id;
+      console.log(senatorSearchResult);
+
+    // Fetch list of members of The U.S. House of Representatives
+    const representativesList = await house.get("", {});
+    representativesList.data.results[0].members.forEach(
+      listMember =>
+        (listMember.full_name = `${listMember.first_name} ${listMember.last_name}`)
+    );
+
+    // Find specific representative from search term (first and last name)
+    const representativesSearch = new Fuse( representativesList.data.results[0].members, options);
+    const representativesSearchResult = representativesSearch.search(`${term}`);
+
+    if (representativesSearchResult.length > 0)
+      crp_id = representativesSearchResult[0].crp_id;
+      console.log(representativesSearchResult);
+
   };
 
   render() {
@@ -50,4 +79,3 @@ class App extends React.Component {
   }
 }
 export default App;
-

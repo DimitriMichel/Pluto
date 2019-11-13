@@ -16,7 +16,7 @@ class SearchBar extends React.Component {
         <div className="sbar">
           <Form style={{margin: "auto"}}>
             <Search
-              placeholder="Enter Address"
+              placeholder="Enter Congress Member"
               enterButton="Search"
               size="default"
               onSearch={this.onFormSubmit}

@@ -42,7 +42,7 @@ class App extends React.Component {
 
     if (senatorSearchResult.length > 0)
       crp_id = senatorSearchResult[0].crp_id;
-      console.log(senatorSearchResult);
+
 
     // Fetch list of members of The U.S. House of Representatives
     const representativesList = await house.get("", {});
@@ -57,7 +57,7 @@ class App extends React.Component {
 
     if (representativesSearchResult.length > 0)
       crp_id = representativesSearchResult[0].crp_id;
-      console.log(representativesSearchResult);
+
 
   };
 

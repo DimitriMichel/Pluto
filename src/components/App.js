@@ -14,7 +14,9 @@ const { Meta } = Card;
 class App extends React.Component {
   state = {
     politician: [],
-    contributions: []
+    contributions: [],
+    financialSummary: [],
+    personalAssets: []
   };
   onTermSubmit = async term => {
     let crp_id;
@@ -45,7 +47,10 @@ class App extends React.Component {
     );
     const senatorSearchResult = senatorSearch.search(`${term}`);
     console.log(senatorSearchResult);
-    if (senatorSearchResult.length > 0) crp_id = senatorSearchResult[0].crp_id;
+    if (typeof senatorSearchResult[0] !== "undefined"){
+      crp_id = senatorSearchResult[0].crp_id;
+      this.setState({ politician: senatorSearchResult[0] });
+    }
 
     // Fetch list of members of The U.S. House of Representatives and create full_name property for fuzzy search
     const representativesList = await house.get("", {});
@@ -62,10 +67,13 @@ class App extends React.Component {
     );
     const representativesSearchResult = representativesSearch.search(`${term}`);
 
-    if (representativesSearchResult.length > 0)
+    if (typeof representativesSearchResult[0] !== "undefined"){
       crp_id = representativesSearchResult[0].crp_id;
-    console.log(representativesSearchResult[0]);
-    this.setState({ politician: representativesSearchResult[0] });
+      console.log(representativesSearchResult[0]);
+      this.setState({ politician: representativesSearchResult[0] });
+      console.log(this.state);
+    }
+
 
     // Obtain top ten contributor data, financial summary, personal assets and from returned politician
     const topContributions = await finance.get("/?method=candContrib", {
@@ -73,11 +81,16 @@ class App extends React.Component {
         cid: crp_id
       }
     });
-    console.log(topContributions);
-    const contributorsObject = topContributions.data.response.contributors.contributor;
+    this.setState({ contributions: topContributions.data.response.contributors.contributor });
+    console.log(this.state.contributions);
+    const contributorsObject =
+      topContributions.data.response.contributors.contributor;
     console.log(contributorsObject);
-    const contributorsList = contributorsObject.forEach(contributor => console.log(contributor["@attributes"].org_name)
+    const contributorsList = [];
+    this.state.contributions.forEach(contributor =>
+        contributorsList.push(contributor["@attributes"].org_name)
     );
+    console.log(contributorsList);
 
     const financialSummary = await finance.get("/?method=candSummary", {
       params: {
@@ -111,14 +124,17 @@ class App extends React.Component {
                     cover={
                       <img
                         alt="example"
-                        src="https://theunitedstates.io/images/congress/original/O000172.jpg"
+                        src={`https://theunitedstates.io/images/congress/original/${this.state.politician.id}.jpg`}
                       />
                     }
                   >
-                    <Meta className="cardtitle" title="Alexandria" />
+                    <Meta
+                      className="cardtitle"
+                      title={this.state.politician.full_name}
+                    />
                   </Card>
                 </Col>
-                <BarChart />
+                <BarChart contributions={this.state.contributions}/>
               </Row>
               <Row>
                 <Col span={6}>col-6</Col>
@@ -128,7 +144,7 @@ class App extends React.Component {
               </Row>
             </div>
           </Content>
-          <Footer style={{ textAlign: "center" }}>Dimitri Michel © 2019</Footer>
+          <Footer style={{ textAlign: "center" }}>Sacha Michel © 2019</Footer>
         </Layout>
       </div>
     );

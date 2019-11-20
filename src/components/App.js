@@ -82,15 +82,6 @@ class App extends React.Component {
       }
     });
     this.setState({ contributions: topContributions.data.response.contributors.contributor });
-    console.log(this.state.contributions);
-    const contributorsObject =
-      topContributions.data.response.contributors.contributor;
-    console.log(contributorsObject);
-    const contributorsList = [];
-    this.state.contributions.forEach(contributor =>
-        contributorsList.push(contributor["@attributes"].org_name)
-    );
-    console.log(contributorsList);
 
     const financialSummary = await finance.get("/?method=candSummary", {
       params: {

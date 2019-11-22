@@ -1,13 +1,12 @@
 import React from "react";
 import SearchBar from "./SearchBar";
-import BarChart from "./BarChart";
+import ContributionChart from "./ContributionChart";
 import house from "../API/house";
 import senate from "../API/senate";
 import { Layout, Card, Row, Col } from "antd";
 import Fuse from "fuse.js";
 import finance from "../API/finance";
 import "./layout.css";
-import 'frappe-charts/dist/frappe-charts.min.css';
 
 
 const { Header, Content, Footer } = Layout;
@@ -132,7 +131,7 @@ class App extends React.Component {
                     />
                   </Card>
                 </Col>
-                <BarChart contributions={this.state.contributions}/>
+                <ContributionChart contributions={this.state.contributions}/>
               </Row>
               <Row>
                 <Col span={24}>

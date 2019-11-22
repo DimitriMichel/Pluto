@@ -1,6 +1,8 @@
 import React from 'react';
 import { Col } from "antd";
-import {chart} from "frappe-charts/dist/frappe-charts.esm"
+import ReactFrappeChart from "react-frappe-charts";
+import Chart from "frappe-charts";
+
 
 const BarChart = props => {
     const contributorsList = [];
@@ -12,9 +14,19 @@ const BarChart = props => {
         contributionTotal.push(contributor["@attributes"].total)
     );
     console.log(props);
-    console.log(contributorsList);
-    console.log(contributionTotal);
-    return <Col span={18}>BarChart</Col>
+
+    return <Col span={20}>
+        <Chart
+            type="bar"
+            colors={["#21ba45"]}
+            axisOptions={{ xAxisMode: "tick", yAxisMode: "tick", xIsSeries: 1, truncateLegends:true,  }}
+            height={250}
+            data={{
+                labels: contributorsList,
+                datasets: [{ values: contributionTotal }]
+            }}
+        />
+    </Col>
 };
 
 export default BarChart

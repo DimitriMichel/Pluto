@@ -3,10 +3,12 @@ import SearchBar from "./SearchBar";
 import BarChart from "./BarChart";
 import house from "../API/house";
 import senate from "../API/senate";
-import { Layout, Card, Menu, Row, Col } from "antd";
+import { Layout, Card, Row, Col } from "antd";
 import Fuse from "fuse.js";
 import finance from "../API/finance";
 import "./layout.css";
+import 'frappe-charts/dist/frappe-charts.min.css';
+
 
 const { Header, Content, Footer } = Layout;
 const { Meta } = Card;
@@ -15,6 +17,7 @@ class App extends React.Component {
   state = {
     politician: [],
     contributions: [],
+    contributionsList: [],
     financialSummary: [],
     personalAssets: []
   };
@@ -82,6 +85,10 @@ class App extends React.Component {
       }
     });
     this.setState({ contributions: topContributions.data.response.contributors.contributor });
+    const contributorsList = [];
+    this.state.contributions.forEach(contributor =>
+        contributorsList.push(contributor["@attributes"].org_name)
+    );
 
     const financialSummary = await finance.get("/?method=candSummary", {
       params: {
@@ -108,7 +115,7 @@ class App extends React.Component {
           <Content style={{ padding: "0 50px" }}>
             <div style={{ background: "#fff", padding: 20, minHeight: 280 }}>
               <Row>
-                <Col span={6}>
+                <Col span={4}>
                   <Card
                     className="logo"
                     bodyStyle={{ padding: "10px" }}
@@ -128,10 +135,8 @@ class App extends React.Component {
                 <BarChart contributions={this.state.contributions}/>
               </Row>
               <Row>
-                <Col span={6}>col-6</Col>
-                <Col span={6}>col-6</Col>
-                <Col span={6}>col-6</Col>
-                <Col span={6}>col-6</Col>
+                <Col span={24}>
+                </Col>
               </Row>
             </div>
           </Content>

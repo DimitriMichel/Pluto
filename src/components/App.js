@@ -3,13 +3,15 @@ import SearchBar from "./SearchBar";
 import ContributionChart from "./ContributionChart";
 import house from "../API/house";
 import senate from "../API/senate";
-import { Layout, Card, Row, Col } from "antd";
+import { Layout, Card, Row, Col, Divider } from "antd";
 import Fuse from "fuse.js";
 import finance from "../API/finance";
 import "./layout.css";
+import CircleChart from "./CircleChart";
 
 const { Header, Content, Footer } = Layout;
 const { Meta } = Card;
+
 
 class App extends React.Component {
   state = {
@@ -133,8 +135,13 @@ class App extends React.Component {
                 </Col>
                 <ContributionChart contributions={this.state.contributions} />
               </Row>
+              <Divider />
               <Row>
-                <Col span={24}></Col>
+                <div>
+                  <Col>
+                    <CircleChart politicianInfo={this.state.politician} />
+                  </Col>
+                </div>
               </Row>
             </div>
           </Content>

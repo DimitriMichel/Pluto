@@ -16,9 +16,22 @@ const ContributionChart = props => {
 
   const BarChart = ({ data }) => (
     <C3Chart
+      title={{
+        show: false,
+        text: "Top Ten Contributors",
+        position: "top-center",
+        padding: {
+          top: 10,
+          right: 20,
+          bottom: 20,
+          left: 50
+        }
+      }}
+      axis={{x: {tick: {values: ["Donors"]}}}}
       data={{
         json: data,
         type: "bar",
+        title: "usage ",
         colors: {
           [contributorsList[0]]: "#EB1227",
           [contributorsList[1]]: "#F16C2F",

@@ -26,10 +26,10 @@ const ContributionChart = props => {
           [contributorsList[3]]: "#7FAF5E",
           [contributorsList[4]]: "#322A3B",
           [contributorsList[5]]: "#7A8089",
-          [contributorsList[5]]: "#AAA994",
+          [contributorsList[6]]: "#34B7A4",
           [contributorsList[7]]: "#CA552D",
           [contributorsList[8]]: "#6C7658",
-          [contributorsList[9]]: "#88A693"
+          [contributorsList[9]]: "#686898"
         }
       }}
     />
@@ -43,7 +43,7 @@ const ContributionChart = props => {
       [contributorsList[3]]: [36000],
       [contributorsList[4]]: [72000],
       [contributorsList[5]]: [16000],
-      [contributorsList[5]]: [30070],
+      [contributorsList[6]]: [30070],
       [contributorsList[7]]: [51030],
       [contributorsList[8]]: [12000],
       [contributorsList[9]]: [14060]

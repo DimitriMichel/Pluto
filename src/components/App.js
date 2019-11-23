@@ -8,7 +8,6 @@ import Fuse from "fuse.js";
 import finance from "../API/finance";
 import "./layout.css";
 
-
 const { Header, Content, Footer } = Layout;
 const { Meta } = Card;
 
@@ -49,7 +48,7 @@ class App extends React.Component {
     );
     const senatorSearchResult = senatorSearch.search(`${term}`);
     console.log(senatorSearchResult);
-    if (typeof senatorSearchResult[0] !== "undefined"){
+    if (typeof senatorSearchResult[0] !== "undefined") {
       crp_id = senatorSearchResult[0].crp_id;
       this.setState({ politician: senatorSearchResult[0] });
     }
@@ -69,13 +68,12 @@ class App extends React.Component {
     );
     const representativesSearchResult = representativesSearch.search(`${term}`);
 
-    if (typeof representativesSearchResult[0] !== "undefined"){
+    if (typeof representativesSearchResult[0] !== "undefined") {
       crp_id = representativesSearchResult[0].crp_id;
       console.log(representativesSearchResult[0]);
       this.setState({ politician: representativesSearchResult[0] });
       console.log(this.state);
     }
-
 
     // Obtain top ten contributor data, financial summary, personal assets and from returned politician
     const topContributions = await finance.get("/?method=candContrib", {
@@ -83,10 +81,12 @@ class App extends React.Component {
         cid: crp_id
       }
     });
-    this.setState({ contributions: topContributions.data.response.contributors.contributor });
+    this.setState({
+      contributions: topContributions.data.response.contributors.contributor
+    });
     const contributorsList = [];
     this.state.contributions.forEach(contributor =>
-        contributorsList.push(contributor["@attributes"].org_name)
+      contributorsList.push(contributor["@attributes"].org_name)
     );
 
     const financialSummary = await finance.get("/?method=candSummary", {
@@ -131,11 +131,10 @@ class App extends React.Component {
                     />
                   </Card>
                 </Col>
-                <ContributionChart contributions={this.state.contributions}/>
+                <ContributionChart contributions={this.state.contributions} />
               </Row>
               <Row>
-                <Col span={24}>
-                </Col>
+                <Col span={24}></Col>
               </Row>
             </div>
           </Content>

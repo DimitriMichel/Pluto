@@ -15,6 +15,7 @@ const { Meta } = Card;
 
 class App extends React.Component {
   state = {
+    isFetching: false,
     politician: [],
     contributions: [],
     contributionsList: [],
@@ -36,6 +37,7 @@ class App extends React.Component {
     };
 
     // Fetch list of members of The U.S. Senate and create full_name property for fuzzy search
+    this.setState({isFetching: true});
     const senatorsList = await senate.get("", {});
     senatorsList.data.results[0].members.forEach(
       listMember =>
@@ -76,6 +78,7 @@ class App extends React.Component {
       this.setState({ politician: representativesSearchResult[0] });
       console.log(this.state);
     }
+    this.setState({isFetching: false});
 
     // Obtain top ten contributor data, financial summary, personal assets and from returned politician
     const topContributions = await finance.get("/?method=candContrib", {
@@ -139,7 +142,7 @@ class App extends React.Component {
               <Row>
                 <div>
                   <Col>
-                    <CircleChart politicianInfo={this.state.politician} />
+                    {!this.state.isFetching && <CircleChart politicianInfo={this.state.politician} />}
                   </Col>
                 </div>
               </Row>

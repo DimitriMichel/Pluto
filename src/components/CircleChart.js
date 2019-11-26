@@ -3,7 +3,7 @@ import Chart from "react-apexcharts";
 import "c3/c3.css";
 import { Col } from "antd";
 
-const CircleChart = props => {
+const CircleChart = React.memo(props => {
   const votesWith = Math.round(props.politicianInfo.votes_with_party_pct);
   const votesAgainst = Math.round(
     100 - props.politicianInfo.votes_with_party_pct
@@ -16,6 +16,12 @@ const CircleChart = props => {
         height: "auto",
         width: "auto"
       }
+    },
+    responsive: [
+      {
+        breakpoint: undefined}],
+    legend: {
+      position: 'bottom'
     }
   };
   const series = [votesWith, votesAgainst];
@@ -27,6 +33,6 @@ const CircleChart = props => {
       </div>
     </Col>
   );
-};
+});
 
 export default CircleChart;

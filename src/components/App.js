@@ -8,6 +8,7 @@ import Fuse from "fuse.js";
 import finance from "../API/finance";
 import "./layout.css";
 import CircleChart from "./CircleChart";
+import CircleChart2 from "./CircleChart2";
 
 const { Header, Content, Footer } = Layout;
 const { Meta } = Card;
@@ -142,7 +143,10 @@ class App extends React.Component {
               <Row>
                 <div>
                   <Col>
-                    {!this.state.isFetching && <CircleChart politicianInfo={this.state.politician} />}
+                    <CircleChart politicianInfo={this.state.politician} />
+                  </Col>
+                  <Col>
+                    <CircleChart2 politicianInfo={this.state.politician} />
                   </Col>
                 </div>
               </Row>

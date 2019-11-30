@@ -1,18 +1,17 @@
 import React from "react";
 import SearchBar from "./SearchBar";
-import ContributionChart from "./ContributionChart";
 import house from "../API/house";
 import senate from "../API/senate";
 import { Layout, Card, Row, Col, Divider } from "antd";
 import Fuse from "fuse.js";
 import finance from "../API/finance";
 import "./layout.css";
-import CircleChart from "./CircleChart";
-import CircleChart2 from "./CircleChart2";
-
+import PieChartPartyVotes from "./PieChartPartyVotes";
+import PieChartMissedVotes from "./PieChartMissedVotes";
+import ContributorsChart from "./ContributorsChart";
+import PolitcianInfoCard from "./PloticianInfoCard";
 const { Header, Content, Footer } = Layout;
 const { Meta } = Card;
-
 
 class App extends React.Component {
   state = {
@@ -29,7 +28,7 @@ class App extends React.Component {
     // Fuzzy search configurations
     const options = {
       shouldSort: true,
-      threshold: 0.4,
+      threshold: 0.3,
       location: 0,
       distance: 100,
       maxPatternLength: 32,
@@ -38,7 +37,7 @@ class App extends React.Component {
     };
 
     // Fetch list of members of The U.S. Senate and create full_name property for fuzzy search
-    this.setState({isFetching: true});
+    this.setState({ isFetching: true });
     const senatorsList = await senate.get("", {});
     senatorsList.data.results[0].members.forEach(
       listMember =>
@@ -79,7 +78,7 @@ class App extends React.Component {
       this.setState({ politician: representativesSearchResult[0] });
       console.log(this.state);
     }
-    this.setState({isFetching: false});
+    this.setState({ isFetching: false });
 
     // Obtain top ten contributor data, financial summary, personal assets and from returned politician
     const topContributions = await finance.get("/?method=candContrib", {
@@ -107,6 +106,12 @@ class App extends React.Component {
       }
     });
     console.log(personalAssets);
+    const topIndustry = await finance.get("/?method=candIndustry", {
+      params: {
+        cid: crp_id
+      }
+    });
+    console.log(topIndustry);
   };
 
   render() {
@@ -114,9 +119,10 @@ class App extends React.Component {
       <div>
         <Layout className="layout">
           <Header>
+            <SearchBar onFormSubmit={this.onTermSubmit} />
             <div className="logo" />
           </Header>
-          <SearchBar onFormSubmit={this.onTermSubmit} />
+          <div className="sbar" />
           <Content style={{ padding: "0 50px" }}>
             <div style={{ background: "#fff", padding: 20, minHeight: 280 }}>
               <Row>
@@ -137,16 +143,31 @@ class App extends React.Component {
                     />
                   </Card>
                 </Col>
-                <ContributionChart contributions={this.state.contributions} />
+                <Col span={3}>
+                  <PolitcianInfoCard politicianInfo={this.state.politician}/>
+                </Col>
+                <ContributorsChart
+                  contributions={this.state.contributions}
+                  className={"chart"}
+                />
               </Row>
               <Divider />
               <Row>
                 <div>
                   <Col>
-                    <CircleChart politicianInfo={this.state.politician} />
+                    <PieChartPartyVotes
+                      politicianInfo={this.state.politician}
+                    />
                   </Col>
                   <Col>
-                    <CircleChart2 politicianInfo={this.state.politician} />
+                    <PieChartMissedVotes
+                      politicianInfo={this.state.politician}
+                    />
+                  </Col>
+                  <Col>
+                    <PieChartPartyVotes
+                      politicianInfo={this.state.politician}
+                    />
                   </Col>
                 </div>
               </Row>

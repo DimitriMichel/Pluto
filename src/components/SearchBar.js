@@ -13,12 +13,13 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-        <div className="sbar">
+        <div className="barTop">
           <Form style={{margin: "auto"}}>
             <Search
               placeholder="Enter Congress Member"
-              enterButton="Search"
+              enterButton
               size="default"
+              style={{ maxWidth: 500 }}
               onSearch={this.onFormSubmit}
               value={this.state.term}
               onChange={event => this.setState({term: event.target.value})}

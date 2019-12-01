@@ -16,21 +16,34 @@ const PieChartPartyVotes = React.memo(props => {
         width: "auto"
       }
     },
-    colors: ['#5582db', '#d35050'],
+    colors: ["#5582db", "#d35050"],
     responsive: [
       {
-        breakpoint: undefined}],
+        breakpoint: undefined
+      }
+    ],
     legend: {
-      position: 'bottom'
-    },
-
+      position: "bottom"
+    }
   };
   const series = [votesWith, votesAgainst];
 
   return (
     <Col span={8}>
-      <div style={{ background: "#F0F2F5", padding: "10px" }}>
-        <Chart options={options} series={series} type="pie" height="200" />
+      <div
+          style={{
+            background: "#F0F2F5",
+            padding: "10px",
+            borderTopLeftRadius: "3px",
+            borderBottomLeftRadius: "3px"
+          }}
+      >
+        <Chart
+          options={options}
+          series={series}
+          type="pie"
+          height="200"
+        />
       </div>
     </Col>
   );

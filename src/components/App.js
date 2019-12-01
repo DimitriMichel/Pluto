@@ -10,6 +10,7 @@ import PieChartPartyVotes from "./PieChartPartyVotes";
 import PieChartMissedVotes from "./PieChartMissedVotes";
 import ContributorsChart from "./ContributorsChart";
 import PolitcianInfoCard from "./PloticianInfoCard";
+import IndustryTable from "./IndustryTable";
 const { Header, Content, Footer } = Layout;
 const { Meta } = Card;
 
@@ -18,9 +19,9 @@ class App extends React.Component {
     isFetching: false,
     politician: [],
     contributions: [],
-    contributionsList: [],
     financialSummary: [],
-    personalAssets: []
+    personalAssets: [],
+    topIndustries: []
   };
   onTermSubmit = async term => {
     let crp_id;
@@ -111,6 +112,9 @@ class App extends React.Component {
         cid: crp_id
       }
     });
+    this.setState({
+      topIndustries: topIndustry.data.response.industries.industry
+    });
     console.log(topIndustry);
   };
 
@@ -122,8 +126,7 @@ class App extends React.Component {
             <SearchBar onFormSubmit={this.onTermSubmit} />
             <div className="logo" />
           </Header>
-          <div className="sbar" />
-          <Content style={{ padding: "0 50px" }}>
+          <Content style={{ padding: "25px 50px" }}>
             <div style={{ background: "#fff", padding: 20, minHeight: 280 }}>
               <Row>
                 <Col span={4}>
@@ -144,7 +147,7 @@ class App extends React.Component {
                   </Card>
                 </Col>
                 <Col span={3}>
-                  <PolitcianInfoCard politicianInfo={this.state.politician}/>
+                  <PolitcianInfoCard politicianInfo={this.state.politician} />
                 </Col>
                 <ContributorsChart
                   contributions={this.state.contributions}
@@ -170,6 +173,12 @@ class App extends React.Component {
                     />
                   </Col>
                 </div>
+              </Row>
+              <Divider/>
+              <Row>
+                <IndustryTable
+                    politicianIndustries = {this.state.topIndustries}
+                />
               </Row>
             </div>
           </Content>

@@ -23,16 +23,16 @@ const ContributorsChart = React.memo(props => {
         vertical: 3},
     },
     colors: [
-      "#17bebb",
-      "#546E7A",
-      "#d35050",
-      "#13d8aa",
-      "#A5978B",
-      "#2b908f",
-      "#f9a3a4",
-      "#90ee7e",
-      "#f48024",
-      "#69d2e7"
+      "#5582db",
+      "#5582db",
+      "#5582db",
+      "#4F7FDD",
+      "#5582db",
+      "#7195DD",
+      "#7E9EDD",
+      "#839ED3",
+      "#92A7D3",
+      "#A0B1D3"
     ],
     chart: {
       width: "100%"

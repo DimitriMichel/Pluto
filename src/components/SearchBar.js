@@ -17,9 +17,8 @@ class SearchBar extends React.Component {
           <Form style={{margin: "auto"}}>
             <Search
               placeholder="Enter Congress Member"
-              enterButton
               size="default"
-              style={{ maxWidth: 500 }}
+              style={{ maxWidth: 400}}
               onSearch={this.onFormSubmit}
               value={this.state.term}
               onChange={event => this.setState({term: event.target.value})}

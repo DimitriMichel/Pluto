@@ -11,6 +11,7 @@ import PieChartMissedVotes from "./PieChartMissedVotes";
 import ContributorsChart from "./ContributorsChart";
 import PolitcianInfoCard from "./PloticianInfoCard";
 import IndustryTable from "./IndustryTable";
+import AssetTable from "./AssetTable";
 const { Header, Content, Footer } = Layout;
 const { Meta } = Card;
 
@@ -126,7 +127,7 @@ class App extends React.Component {
             <SearchBar onFormSubmit={this.onTermSubmit} />
             <div className="logo" />
           </Header>
-          <Content style={{ padding: "25px 50px" }}>
+          <Content style={{ padding: "30px 25px" }}>
             <div style={{ background: "#fff", padding: 20, minHeight: 280 }}>
               <Row>
                 <Col span={4}>
@@ -155,7 +156,7 @@ class App extends React.Component {
                 />
               </Row>
               <Divider />
-              <Row>
+              <Row style={{ background: "#F0F2F5", padding: "10px", borderRadius: "4px" }}>
                 <div>
                   <Col>
                     <PieChartPartyVotes
@@ -179,6 +180,7 @@ class App extends React.Component {
                 <IndustryTable
                     politicianIndustries = {this.state.topIndustries}
                 />
+                <AssetTable politicianIndustries = {this.state.topIndustries}/>
               </Row>
             </div>
           </Content>

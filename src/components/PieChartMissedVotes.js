@@ -28,7 +28,7 @@ const CircleChart = React.memo(props => {
 
   return (
     <Col span={8}>
-      <div style={{ background: "#F0F2F5", padding: "10px" }}>
+      <div style={{ padding: "10px" }}>
         <Chart options={options} series={series} type="pie" height="200" />
       </div>
     </Col>

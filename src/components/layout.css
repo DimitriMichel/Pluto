@@ -1,3 +1,14 @@
 .cardtitle {
   text-align: center !important;
 }
+header.ant-layout-header{
+  padding: 0 25px !important;
+}
+
+p {
+  font-size: 1.2vw;
+}
+
+td{
+  font-size: 1.2vw;
+}

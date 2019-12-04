@@ -12,6 +12,12 @@ header.ant-layout-header {
   td {
     font-size: 15px;
   }
+  div.ant-col.ant-col-xs-24.ant-col-sm-24.ant-col-md-24.ant-col-lg-17{
+    padding-top: 25px;
+  }
+  .ant-divider.ant-divider-horizontal{
+    margin-top: 0;
+  }
 }
 
 

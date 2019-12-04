@@ -169,7 +169,6 @@ class App extends React.Component {
                 <IndustryTable
                   politicianIndustries={this.state.topIndustries}
                 />
-                <AssetTable politicianIndustries={this.state.topIndustries} />
               </Row>
             </div>
           </Content>

@@ -68,7 +68,22 @@ const ContributorsChart = React.memo(props => {
           return "$" + val;
         }
       }
-    }
+    },
+    responsive: [
+      {
+        breakpoint: 1000,
+        options: {
+          plotOptions: {
+            bar: {
+              horizontal: true
+            }
+          },
+          legend: {
+            position: "bottom"
+          }
+        }
+      }
+    ]
   };
   const series = [
     {
@@ -114,7 +129,7 @@ const ContributorsChart = React.memo(props => {
   ];
 
   return (
-    <Col span={17}>
+    <Col xs={24} sm={24} md={24} lg={17} >
       <div>
         <Chart options={options} series={series} type="bar" height="300" />
       </div>

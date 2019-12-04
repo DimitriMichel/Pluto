@@ -20,7 +20,8 @@ const ContributorsChart = React.memo(props => {
       show: true,
       itemMargin: {
         horizontal: 6,
-        vertical: 3},
+        vertical: 3
+      }
     },
     colors: [
       "#5582db",
@@ -52,7 +53,7 @@ const ContributorsChart = React.memo(props => {
       colors: ["transparent"]
     },
     xaxis: {
-      categories: ["Contributors"]
+      categories: ["Contributors ($)"]
     },
     yaxis: {
       title: {
@@ -75,11 +76,19 @@ const ContributorsChart = React.memo(props => {
         options: {
           plotOptions: {
             bar: {
-              horizontal: true
+              columnWidth: "100%"
             }
           },
+          yaxis: {
+            title: {
+            }
+          },
+          chart:{
+            offsetX: -22
+          },
+
           legend: {
-            position: "bottom"
+            show: false
           }
         }
       }
@@ -129,7 +138,7 @@ const ContributorsChart = React.memo(props => {
   ];
 
   return (
-    <Col xs={24} sm={24} md={24} lg={17} >
+    <Col xs={24} sm={24} md={24} lg={17}>
       <div>
         <Chart options={options} series={series} type="bar" height="300" />
       </div>

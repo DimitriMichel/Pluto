@@ -12,6 +12,7 @@ import ContributorsChart from "./ContributorsChart";
 import PolitcianInfoCard from "./PloticianInfoCard";
 import IndustryTable from "./IndustryTable";
 import AssetTable from "./AssetTable";
+import PolitcianPhotoCard from "./PolitcianPhotoCard";
 const { Header, Content, Footer } = Layout;
 const { Meta } = Card;
 
@@ -130,33 +131,21 @@ class App extends React.Component {
           <Content style={{ padding: "30px 25px" }}>
             <div style={{ background: "#fff", padding: 20, minHeight: 280 }}>
               <Row>
-                <Col span={4}>
-                  <Card
-                    className="logo"
-                    bodyStyle={{ padding: "10px" }}
-                    cover={
-                      <img
-                        alt="example"
-                        src={`https://theunitedstates.io/images/congress/original/${this.state.politician.id}.jpg`}
-                      />
-                    }
-                  >
-                    <Meta
-                      className="cardtitle"
-                      title={this.state.politician.full_name}
-                    />
-                  </Card>
-                </Col>
-                <Col span={3}>
-                  <PolitcianInfoCard politicianInfo={this.state.politician} />
-                </Col>
+                <PolitcianPhotoCard politicianInfo={this.state.politician} />
+                <PolitcianInfoCard politicianInfo={this.state.politician} />
                 <ContributorsChart
                   contributions={this.state.contributions}
                   className={"chart"}
                 />
               </Row>
               <Divider />
-              <Row style={{ background: "#F0F2F5", padding: "10px", borderRadius: "4px" }}>
+              <Row
+                style={{
+                  background: "#F0F2F5",
+                  padding: "10px",
+                  borderRadius: "4px"
+                }}
+              >
                 <div>
                   <Col>
                     <PieChartPartyVotes
@@ -175,12 +164,12 @@ class App extends React.Component {
                   </Col>
                 </div>
               </Row>
-              <Divider/>
+              <Divider />
               <Row>
                 <IndustryTable
-                    politicianIndustries = {this.state.topIndustries}
+                  politicianIndustries={this.state.topIndustries}
                 />
-                <AssetTable politicianIndustries = {this.state.topIndustries}/>
+                <AssetTable politicianIndustries={this.state.topIndustries} />
               </Row>
             </div>
           </Content>

@@ -57,7 +57,6 @@ const ContributorsChart = React.memo(props => {
     },
     yaxis: {
       title: {
-        text: "Dollars"
       }
     },
     fill: {

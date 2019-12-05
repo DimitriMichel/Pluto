@@ -8,12 +8,18 @@ import finance from "../API/finance";
 import "./layout.css";
 import PieChartPartyVotes from "./PieChartPartyVotes";
 import PieChartMissedVotes from "./PieChartMissedVotes";
+import PieChartMoneySpent from "./PieChartMoneySpent";
 import ContributorsChart from "./ContributorsChart";
 import PolitcianInfoCard from "./PloticianInfoCard";
 import IndustryTable from "./IndustryTable";
 import PolitcianPhotoCard from "./PolitcianPhotoCard";
 const { Header, Content, Footer } = Layout;
 
+/*
+all properties such as "xs={13} sm={13} md={13} lg={3}" are responsiveness parameters and are in reference to antd grid
+https://ant.design/components/grid/
+grid is placed within library Layout
+*/
 
 class App extends React.Component {
   state = {
@@ -95,8 +101,9 @@ class App extends React.Component {
         cid: crp_id
       }
     });
+    this.setState({financialSummary: financialSummary.data.response.summary["@attributes"]});
     console.log("Financial Summary");
-    console.log(financialSummary);
+    console.log(this.state.financialSummary);
     const personalAssets = await finance.get("/?method=memPFDprofile", {
       params: {
         cid: crp_id
@@ -112,8 +119,6 @@ class App extends React.Component {
     this.setState({
       topIndustries: topIndustry.data.response.industries.industry
     });
-
-
   };
 
   render() {
@@ -154,8 +159,8 @@ class App extends React.Component {
                     />
                   </Col>
                   <Col>
-                    <PieChartPartyVotes
-                      politicianInfo={this.state.politician}
+                    <PieChartMoneySpent
+                      politicianFinancialSumary={this.state.financialSummary}
                     />
                   </Col>
                 </div>

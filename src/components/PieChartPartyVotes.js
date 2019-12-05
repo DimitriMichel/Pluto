@@ -9,7 +9,7 @@ const PieChartPartyVotes = React.memo(props => {
   );
 
   const options = {
-    labels: ["Votes With Party", "Votes Against Party"],
+    labels: ["With Party", "Against Party"],
     plotOptions: {
       pie: {
         height: "auto",
@@ -31,19 +31,8 @@ const PieChartPartyVotes = React.memo(props => {
   return (
     <Col span={8}>
       <div
-          style={{
-            background: "#F0F2F5",
-            padding: "10px",
-            borderTopLeftRadius: "3px",
-            borderBottomLeftRadius: "3px"
-          }}
       >
-        <Chart
-          options={options}
-          series={series}
-          type="pie"
-          height="200"
-        />
+        <Chart options={options} series={series} type="pie" height="200" />
       </div>
     </Col>
   );

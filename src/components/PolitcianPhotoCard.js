@@ -1,11 +1,10 @@
 import React from "react";
 import { Card, Col } from "antd";
-import "./PoliticianPhotoCard.css"
+import "./PoliticianPhotoCard.css";
 const { Meta } = Card;
 
-
-
 const PolitcianPhotoCard = props => {
+  //console.log(props.politicianInfo);
   return (
     <Col xs={11} sm={11} md={11} lg={4}>
       <Card

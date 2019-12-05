@@ -3,27 +3,6 @@ import "antd/dist/antd.css";
 import { Table, Col } from "antd";
 
 const IndustryTable = React.memo(props => {
-  console.log("Industry Table");
-  const industryList = [];
-  const industryTotal = [];
-  const politicalActionCommitteeTotal = [];
-  const individualsTotal = [];
-
-  props.politicianIndustries.forEach(industry =>
-    industryList.push(industry["@attributes"].industry_name)
-  );
-  props.politicianIndustries.forEach(industry =>
-    industryTotal.push(industry["@attributes"].total)
-  );
-  props.politicianIndustries.forEach(industry =>
-    politicalActionCommitteeTotal.push(industry["@attributes"].pacs)
-  );
-  props.politicianIndustries.forEach(industry =>
-    individualsTotal.push(industry["@attributes"].indivs)
-  );
-
-
-
   const columns = [
     {
       title: "Industry",
@@ -42,32 +21,32 @@ const IndustryTable = React.memo(props => {
     },
     {
       title: "Total",
-      dataIndex: "total",
-
+      dataIndex: "total"
     }
   ];
-  const data = [];
-  props.politicianIndustries.forEach((industry, index) => {
-    const industry_data = {
+
+  // list of dictionaries created to fulfill dataSource requirement of antd table. *index required*
+  const data = props.politicianIndustries.map((industry, index) => {
+    const { industry_name, total, pacs, indivs } = industry["@attributes"];
+    return {
       key: index,
-      industry_name: industry["@attributes"].industry_name,
-      total: `$${industry["@attributes"].total}`,
-      PACs: `$${industry["@attributes"].pacs}`,
-      Individuals: `$${industry["@attributes"].indivs}`
+      industry_name,
+      total,
+      PACs: pacs,
+      Individuals: indivs
     };
-    data.push(industry_data);
   });
-  console.log(data);
+
   return (
-    <Col span={12}>
+    <Col xs={24} sm={24} md={24} lg={12} xl={12}>
       <Table
         columns={columns}
         dataSource={data}
         size="small"
-        scroll={{ x: 1300 }}
+        scroll={{ x: 850 }}
         pagination={false}
         bordered={true}
-        style={{ padding: "10px 10px 0px 0px"}}
+        style={{ padding: "10px 10px 0px 0px" }}
       />
     </Col>
   );

@@ -5,6 +5,7 @@ import { Col } from "antd";
 import "./ContributorsChart.css";
 
 const ContributorsChart = React.memo(props => {
+  //put organization name and contribution total into respective lists for chart
   const contributorsList = [];
   const contributionTotal = [];
   props.contributions.forEach(contributor =>
@@ -62,6 +63,7 @@ const ContributorsChart = React.memo(props => {
       opacity: 1
     },
     tooltip: {
+      //add dollar amount to Y axis in bar click/touch
       y: {
         formatter: function(val) {
           return "$" + val;
@@ -136,7 +138,7 @@ const ContributorsChart = React.memo(props => {
   ];
 
   return (
-    <Col xs={24} sm={24} md={24} lg={17}>
+    <Col xs={24} sm={24} md={24} lg={17} xl={17}>
       <div>
         <Chart options={options} series={series} type="bar" height="300" />
       </div>

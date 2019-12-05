@@ -2,7 +2,7 @@ import React from "react";
 import SearchBar from "./SearchBar";
 import house from "../API/house";
 import senate from "../API/senate";
-import { Layout, Card, Row, Col, Divider } from "antd";
+import { Layout, Row, Col, Divider } from "antd";
 import Fuse from "fuse.js";
 import finance from "../API/finance";
 import "./layout.css";
@@ -11,10 +11,9 @@ import PieChartMissedVotes from "./PieChartMissedVotes";
 import ContributorsChart from "./ContributorsChart";
 import PolitcianInfoCard from "./PloticianInfoCard";
 import IndustryTable from "./IndustryTable";
-import AssetTable from "./AssetTable";
 import PolitcianPhotoCard from "./PolitcianPhotoCard";
 const { Header, Content, Footer } = Layout;
-const { Meta } = Card;
+
 
 class App extends React.Component {
   state = {
@@ -40,13 +39,11 @@ class App extends React.Component {
     };
 
     // Fetch list of members of The U.S. Senate and create full_name property for fuzzy search
-    this.setState({ isFetching: true });
     const senatorsList = await senate.get("", {});
     senatorsList.data.results[0].members.forEach(
       listMember =>
         (listMember.full_name = `${listMember.first_name} ${listMember.last_name}`)
     );
-    console.log(senatorsList);
 
     // Find specific senator from search term and set crp_id
     const senatorSearch = new Fuse(
@@ -54,7 +51,6 @@ class App extends React.Component {
       options
     );
     const senatorSearchResult = senatorSearch.search(`${term}`);
-    console.log(senatorSearchResult);
     if (typeof senatorSearchResult[0] !== "undefined") {
       crp_id = senatorSearchResult[0].crp_id;
       this.setState({ politician: senatorSearchResult[0] });
@@ -77,11 +73,8 @@ class App extends React.Component {
 
     if (typeof representativesSearchResult[0] !== "undefined") {
       crp_id = representativesSearchResult[0].crp_id;
-      console.log(representativesSearchResult[0]);
       this.setState({ politician: representativesSearchResult[0] });
-      console.log(this.state);
     }
-    this.setState({ isFetching: false });
 
     // Obtain top ten contributor data, financial summary, personal assets and from returned politician
     const topContributions = await finance.get("/?method=candContrib", {
@@ -102,12 +95,14 @@ class App extends React.Component {
         cid: crp_id
       }
     });
+    console.log("Financial Summary");
     console.log(financialSummary);
     const personalAssets = await finance.get("/?method=memPFDprofile", {
       params: {
         cid: crp_id
       }
     });
+    console.log("Person Assests");
     console.log(personalAssets);
     const topIndustry = await finance.get("/?method=candIndustry", {
       params: {
@@ -117,7 +112,8 @@ class App extends React.Component {
     this.setState({
       topIndustries: topIndustry.data.response.industries.industry
     });
-    console.log(topIndustry);
+
+
   };
 
   render() {

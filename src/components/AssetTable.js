@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import "antd/dist/antd.css";
 import { Table, Col } from "antd";
 
@@ -121,6 +120,7 @@ const AssetTable = React.memo(props => {
         columns={columns}
         dataSource={data}
         size="small"
+        scroll={{ x: 1300 }}
         pagination={false}
         bordered={true}
         style={{ padding: "10px 0px 0px 10px", fontSize: "8vw !important" }}

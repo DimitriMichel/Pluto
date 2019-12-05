@@ -1,10 +1,9 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import "antd/dist/antd.css";
 import { Table, Col } from "antd";
 
 const IndustryTable = React.memo(props => {
-  console.log(props);
+  console.log("Industry Table");
   const industryList = [];
   const industryTotal = [];
   const politicalActionCommitteeTotal = [];
@@ -22,13 +21,14 @@ const IndustryTable = React.memo(props => {
   props.politicianIndustries.forEach(industry =>
     individualsTotal.push(industry["@attributes"].indivs)
   );
-  console.log(industryTotal);
-  console.log(individualsTotal);
-  console.log(politicalActionCommitteeTotal);
+
+
+
   const columns = [
     {
       title: "Industry",
-      dataIndex: "industry_name"
+      dataIndex: "industry_name",
+      width: 210
     },
     {
       title: "Individuals",
@@ -115,15 +115,27 @@ const IndustryTable = React.memo(props => {
       Individuals: individualsTotal[9]
     }
   ];
+  const things = [];
+  props.politicianIndustries.forEach(industry => {
+    const industry_data = {
+      industry_name: industry["@attributes"].industry_name,
+      total: industry["@attributes"].total,
+      PACs: industry["@attributes"].pacs,
+      individuals: industry["@attributes"].indivs
+    };
+    things.push(industry_data);
+  });
+  console.log(things);
   return (
-    <Col span={12}>
+    <Col span={24}>
       <Table
         columns={columns}
         dataSource={data}
         size="small"
+        scroll={{ x: 1300 }}
         pagination={false}
         bordered={true}
-        style={{ padding: "10px 10px 0px 0px" }}
+        style={{ padding: "10px 10px 0px 0px"}}
       />
     </Col>
   );

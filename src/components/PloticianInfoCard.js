@@ -1,6 +1,5 @@
 import React from "react";
-import { Card, Col, Divider, Row } from "antd";
-import Chart from "react-apexcharts";
+import { Card, Col, Divider} from "antd";
 
 const PolitcianInfoCard = props => {
   const politcianState = props.politicianInfo.state;

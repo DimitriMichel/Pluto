@@ -5,7 +5,6 @@ import { Col } from "antd";
 import "./ContributorsChart.css";
 
 const ContributorsChart = React.memo(props => {
-  console.log(props);
   const contributorsList = [];
   const contributionTotal = [];
   props.contributions.forEach(contributor =>

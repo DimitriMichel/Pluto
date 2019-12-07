@@ -96,6 +96,7 @@ class App extends React.Component {
       contributorsList.push(contributor["@attributes"].org_name)
     );
 
+
     const financialSummary = await finance.get("/?method=candSummary", {
       params: {
         cid: crp_id

@@ -1,6 +1,7 @@
 import React from "react";
 import SearchBar from "./SearchBar";
 import house from "../API/house";
+import logo from "./images/pluto_icon_heavy.png"
 import senate from "../API/senate";
 import { Layout, Row, Col, Divider } from "antd";
 import Fuse from "fuse.js";
@@ -11,6 +12,7 @@ import PieChartMissedVotes from "./PieChartMissedVotes";
 import PieChartMoneySpent from "./PieChartMoneySpent";
 import ContributorsChart from "./ContributorsChart";
 import PolitcianInfoCard from "./PloticianInfoCard";
+import AssetTable from "./AssetTable";
 import IndustryTable from "./IndustryTable";
 import PolitcianPhotoCard from "./PolitcianPhotoCard";
 const { Header, Content, Footer } = Layout;
@@ -109,8 +111,9 @@ class App extends React.Component {
         cid: crp_id
       }
     });
+    this.setState({personalAssets: personalAssets.data.response.member_profile.assets.asset});
     console.log("Person Assests");
-    console.log(personalAssets);
+    console.log(this.state.personalAssets);
     const topIndustry = await finance.get("/?method=candIndustry", {
       params: {
         cid: crp_id
@@ -126,8 +129,9 @@ class App extends React.Component {
       <div>
         <Layout className="layout">
           <Header>
+            <img src={logo} alt="logo_icon" className="logo" />
             <SearchBar onFormSubmit={this.onTermSubmit} />
-            <div className="logo" />
+
           </Header>
           <Content style={{ padding: "30px 25px" }}>
             <div style={{ background: "#fff", padding: 20, minHeight: 280 }}>
@@ -170,6 +174,7 @@ class App extends React.Component {
                 <IndustryTable
                   politicianIndustries={this.state.topIndustries}
                 />
+              <AssetTable politicianAssets={this.state.personalAssets}/>
               </Row>
             </div>
           </Content>

@@ -8,7 +8,6 @@ const PolitcianPhotoCard = props => {
   return (
     <Col xs={11} sm={11} md={11} lg={4}>
       <Card
-        className="logo"
         bodyStyle={{ padding: "10px" }}
         cover={
           <img

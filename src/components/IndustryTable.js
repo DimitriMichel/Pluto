@@ -21,7 +21,7 @@ const IndustryTable = React.memo(props => {
     },
     {
       title: "Total",
-      dataIndex: "total"
+      dataIndex: "totalDonated"
     }
   ];
 
@@ -31,9 +31,9 @@ const IndustryTable = React.memo(props => {
     return {
       key: index,
       industry_name,
-      total,
-      PACs: pacs,
-      Individuals: indivs
+      totalDonated: `$${total}`,
+      PACs: `$${pacs}`,
+      Individuals: `$${indivs}`
     };
   });
 

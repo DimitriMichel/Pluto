@@ -2,40 +2,29 @@ import React from "react";
 import "antd/dist/antd.css";
 import { Table, Col } from "antd";
 
-const AssetTable = React(props => {
-  const columns = [
-    {
-      title: "Industry",
-      dataIndex: "industry_name",
-      width: 210
-    },
-    {
-      title: "Individuals",
-      dataIndex: "Individuals",
-      width: 210
-    },
-    {
-      title: "PACs",
-      dataIndex: "PACs",
-      width: 210
-    },
-    {
-      title: "Total",
-      dataIndex: "total"
-    }
-  ];
+const AssetTable = props => {
+    const columns = [
+      {
+        title: "Investment",
+        dataIndex: "name",
+        width: 210
+      },
+      {
+        title: "Holdings",
+        dataIndex: "holdings",
+        width: 210
+      }
+    ];
 
-  // list of dictionaries created to fulfill dataSource requirement of antd table. *index required*
-  const data = props.politicianIndustries.map((industry, index) => {
-    const { industry_name, total, pacs, indivs } = industry["@attributes"];
-    return {
-      key: index,
-      industry_name,
-      total,
-      PACs: pacs,
-      Individuals: indivs
-    };
-  });
+    // list of dictionaries created to fulfill dataSource requirement of antd table. *index required*
+    const data = props.politicianAssets.map((asset, index) => {
+      const { name, holdings_high } = asset["@attributes"];
+      return {
+        key: index,
+        name,
+        holdings: `$${holdings_high}`
+      };
+    });
 
   return (
       <Col xs={24} sm={24} md={24} lg={12} xl={12}>
@@ -43,12 +32,11 @@ const AssetTable = React(props => {
             columns={columns}
             dataSource={data}
             size="small"
-            scroll={{ x: 850 }}
             pagination={false}
             bordered={true}
             style={{ padding: "10px 10px 0px 0px" }}
         />
       </Col>
   );
-});
+};
 export default AssetTable;

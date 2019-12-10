@@ -23,7 +23,6 @@ grid is placed within library Layout
 
 class App extends React.Component {
   state = {
-    isFetching: false,
     politician: [],
     contributions: [],
     financialSummary: [],

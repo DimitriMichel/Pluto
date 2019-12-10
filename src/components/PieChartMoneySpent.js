@@ -3,9 +3,10 @@ import Chart from "react-apexcharts";
 import { Col } from "antd";
 
 const PieChartMoneySpent = React.memo(props => {
-  const total = Math.round(props.politicianFinancialSumary.total);
-  const spent = Math.round(props.politicianFinancialSumary.spent);
-  const percentageSpent = (spent / total) * 100;
+  const total = props.politicianFinancialSumary.total;
+  const spent = props.politicianFinancialSumary.spent;
+
+  const percentageSpent = spent / total * 100;
   const percentSaved = 100 - percentageSpent;
 
   const options = {
@@ -26,7 +27,7 @@ const PieChartMoneySpent = React.memo(props => {
       position: "bottom"
     }
   };
-  const series = [percentageSpent, percentSaved];
+  const series = [Math.round(percentageSpent), Math.round(percentSaved)];
 
   return (
     <Col span={8}>

@@ -3,7 +3,6 @@ import "antd/dist/antd.css";
 import { Table, Col } from "antd";
 
 const AssetTable = React.memo(props => {
-  console.log(props);
   const industryList = [];
   const industryTotal = [];
   const politicalActionCommitteeTotal = [];

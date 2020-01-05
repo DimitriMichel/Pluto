@@ -1,7 +1,6 @@
 import React from "react";
-import { Form, Input } from "antd";
-import "./SearchBar.css";
-
+import {Form, Input} from "antd"
+import "./main.css";
 const { Search } = Input;
 
 class SearchBar extends React.Component {

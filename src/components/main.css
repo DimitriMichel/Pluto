@@ -26,7 +26,26 @@ form.ant-form.ant-form-horizontal {
   .ant-divider.ant-divider-horizontal {
     margin-top: 0;
   }
-  .logo{
+  .logo {
     display: none;
   }
+}
+
+.chart {
+  height: 400px;
+}
+
+@media screen and (max-width: 600px) {
+  img {
+    max-height: 150px;
+    max-width: 132px;
+  }
+}
+
+.sbar {
+  padding: 5px;
+}
+.barTop {
+  padding-top: 18px;
+  width: 370px;
 }

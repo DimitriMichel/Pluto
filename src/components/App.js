@@ -1,21 +1,27 @@
 import React from "react";
-import SearchBar from "./SearchBar";
+//FUZZY SEARCH
+import Fuse from "fuse.js";
+//API
 import house from "../API/house";
-import logo from "./images/pluto_icon_heavy.png";
 import senate from "../API/senate";
+import finance from "../API/finance";
+//ANTD
+import Spin from 'antd/es/spin'
 import Col from "antd/es/col";
 import Layout from "antd/es/layout";
 import Row from "antd/es/row";
 import Divider from "antd/es/divider";
-import Fuse from "fuse.js";
-import finance from "../API/finance";
-import "./layout.css";
-import PieChartPartyVotes from "./PieChartPartyVotes";
+//COMPONENTS
+import SearchBar from "./SearchBar";
 import PieChartMoneySpent from "./PieChartMoneySpent";
 import ContributorsChart from "./ContributorsChart";
 import PolitcianInfoCard from "./PloticianInfoCard";
 import AssetTable from "./AssetTable";
-import IndustryTable from "./IndustryTable";
+
+//ASSETS
+import logo from "./images/pluto_icon_heavy.png";
+import "./main.css";
+
 const { Header, Content, Footer } = Layout;
 
 /*
@@ -155,11 +161,6 @@ class App extends React.Component {
               >
                 <div>
                   <Col>
-                    <PieChartPartyVotes
-                      politicianInfo={this.state.politician}
-                    />
-                  </Col>
-                  <Col>
                     <PieChartMoneySpent
                       politicianFinancialSumary={this.state.financialSummary}
                       politicianInfo={this.state.politician}
@@ -169,10 +170,10 @@ class App extends React.Component {
               </Row>
               <Divider />
               <Row>
-                <IndustryTable
+                <AssetTable
+                  politicianAssets={this.state.personalAssets}
                   politicianIndustries={this.state.topIndustries}
                 />
-                <AssetTable politicianAssets={this.state.personalAssets} />
               </Row>
             </div>
           </Content>

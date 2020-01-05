@@ -1,7 +1,7 @@
 import React from "react";
 import Chart from "react-apexcharts";
 import Col from "antd/es/col";
-import "./ContributorsChart.css";
+import "./main.css";
 
 const ContributorsChart = React.memo(props => {
   //put organization name and contribution total into respective lists for chart

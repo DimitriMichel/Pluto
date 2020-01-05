@@ -11,7 +11,6 @@ import Fuse from "fuse.js";
 import finance from "../API/finance";
 import "./layout.css";
 import PieChartPartyVotes from "./PieChartPartyVotes";
-import PieChartMissedVotes from "./PieChartMissedVotes";
 import PieChartMoneySpent from "./PieChartMoneySpent";
 import ContributorsChart from "./ContributorsChart";
 import PolitcianInfoCard from "./PloticianInfoCard";
@@ -161,13 +160,9 @@ class App extends React.Component {
                     />
                   </Col>
                   <Col>
-                    <PieChartMissedVotes
-                      politicianInfo={this.state.politician}
-                    />
-                  </Col>
-                  <Col>
                     <PieChartMoneySpent
                       politicianFinancialSumary={this.state.financialSummary}
+                      politicianInfo={this.state.politician}
                     />
                   </Col>
                 </div>

@@ -1,5 +1,4 @@
 import React from "react";
-import "antd/dist/antd.css";
 import Table from "antd/es/table"
 import Col from "antd/es/col"
 

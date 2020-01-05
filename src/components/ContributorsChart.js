@@ -1,7 +1,6 @@
 import React from "react";
 import Chart from "react-apexcharts";
-import "c3/c3.css";
-import { Col } from "antd";
+import Col from "antd/es/col";
 import "./ContributorsChart.css";
 
 const ContributorsChart = React.memo(props => {

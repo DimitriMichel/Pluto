@@ -1,5 +1,6 @@
 import React from "react";
-import { Card, Col, Divider} from "antd";
+import { Card, Col, Divider } from "antd";
+const { Meta } = Card;
 
 const PolitcianInfoCard = props => {
   const politcianState = props.politicianInfo.state;
@@ -19,19 +20,35 @@ const PolitcianInfoCard = props => {
   }
 
   return (
-    <Col xs={13} sm={13} md={13} lg={3}>
-      <Card style={{maxWidth: 170}} bodyStyle={{ padding: 12 }}>
-        <p style={{ margin: 0 }}>{politcianParty}</p>
-        <Divider dashed="true" style={{ marginTop: 10, marginBottom: 13 }} />
-        <p style={{ margin: 0 }}>State: {politcianState}</p>
-        <Divider dashed="true" style={{ marginTop: 10, marginBottom: 13 }} />
-        <p style={{ margin: 0 }}>{politicianTitle}</p>
-        <Divider dashed="true" style={{ marginTop: 10, marginBottom: 15 }} />
-        <p style={{ margin: 0 }}>
-          <a>Contact</a>
-        </p>
-      </Card>
-    </Col>
+    <div>
+      <Col xs={11} sm={11} md={11} lg={4}>
+        <Card
+          bodyStyle={{ padding: "10px" }}
+          cover={
+            <img
+              className="politicianImage"
+              alt="Politician"
+              src={`https://theunitedstates.io/images/congress/original/${props.politicianInfo.id}.jpg`}
+            />
+          }
+        >
+          <Meta className="cardtitle" title={props.politicianInfo.full_name} />
+        </Card>
+      </Col>
+      <Col xs={13} sm={13} md={13} lg={3}>
+        <Card style={{ maxWidth: 170 }} bodyStyle={{ padding: 12 }}>
+          <p style={{ margin: 0 }}>{politcianParty}</p>
+          <Divider dashed="true" style={{ marginTop: 10, marginBottom: 13 }} />
+          <p style={{ margin: 0 }}>State: {politcianState}</p>
+          <Divider dashed="true" style={{ marginTop: 10, marginBottom: 13 }} />
+          <p style={{ margin: 0 }}>{politicianTitle}</p>
+          <Divider dashed="true" style={{ marginTop: 10, marginBottom: 15 }} />
+          <p style={{ margin: 0 }}>
+            <a>Contact</a>
+          </p>
+        </Card>
+      </Col>
+    </div>
   );
 };
 

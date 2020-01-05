@@ -1,6 +1,6 @@
 import React from "react";
 import Chart from "react-apexcharts";
-import { Col } from "antd";
+import Col from "antd/es/col";
 
 const CircleChart = React.memo(props => {
   const votesAttended = Math.round(100 - props.politicianInfo.missed_votes_pct);

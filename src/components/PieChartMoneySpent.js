@@ -1,6 +1,6 @@
 import React from "react";
 import Chart from "react-apexcharts";
-import { Col } from "antd";
+import Col from "antd/es/col";
 
 const PieChartMoneySpent = React.memo(props => {
   const total = props.politicianFinancialSumary.total;

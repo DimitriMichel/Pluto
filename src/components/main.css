@@ -1,5 +1,9 @@
+
 .cardtitle {
   text-align: center !important;
+}
+.search-bar{
+  max-width: 370px
 }
 header.ant-layout-header {
   padding: 0 25px !important;
@@ -29,6 +33,9 @@ form.ant-form.ant-form-horizontal {
   .logo {
     display: none;
   }
+  .search-bar{
+    max-width: 260px;
+  }
 }
 
 .chart {
@@ -42,10 +49,17 @@ form.ant-form.ant-form-horizontal {
   }
 }
 
+
 .sbar {
   padding: 5px;
 }
 .barTop {
   padding-top: 18px;
   width: 370px;
+}
+.loading-spinner {
+  padding-bottom: 20px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
 }

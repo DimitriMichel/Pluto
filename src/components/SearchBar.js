@@ -1,5 +1,6 @@
 import React from "react";
 import {Form, Input} from "antd"
+
 import "./main.css";
 const { Search } = Input;
 
@@ -17,7 +18,7 @@ class SearchBar extends React.Component {
           <Search
             placeholder="Enter Congress Member"
             size="default"
-            style={{ maxWidth: 350 }}
+            className="search-bar"
             onSearch={this.onFormSubmit}
             value={this.state.term}
             onChange={event => this.setState({ term: event.target.value })}

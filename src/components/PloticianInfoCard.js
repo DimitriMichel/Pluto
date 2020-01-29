@@ -3,7 +3,6 @@ import { Card, Col, Divider } from "antd";
 const { Meta } = Card;
 
 const PolitcianInfoCard = props => {
-
   const politcianState = props.politicianInfo.state;
   let politcianParty;
   let politicianTitle;
@@ -45,7 +44,17 @@ const PolitcianInfoCard = props => {
           <p style={{ margin: 0 }}>{politicianTitle}</p>
           <Divider dashed="true" style={{ marginTop: 10, marginBottom: 15 }} />
           <p style={{ margin: 0 }}>
-            <a href={props.politicianInfo.url}>Website</a>
+            <a
+              href={props.politicianInfo.url}
+              style={{
+                backgroundColor: "#5482DB",
+                color: "white",
+                padding: "5px 10px 5px 10px",
+                borderRadius: "3px"
+              }}
+            >
+              Website
+            </a>
           </p>
         </Card>
       </Col>

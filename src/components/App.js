@@ -369,7 +369,9 @@ class App extends React.Component {
               <Row>
                 {this.state.isLoading ? (
                   <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                    <Spin className="loading-spinner" />
+                    <div className="spinner-container" style={{padding: "50px"}}>
+                      <Spin className="loading-spinner" />
+                    </div>
                   </Col>
                 ) : (
                   <AssetTable

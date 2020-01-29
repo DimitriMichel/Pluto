@@ -29,7 +29,7 @@ const PolitcianInfoCard = props => {
             <img
               className="politicianImage"
               alt="Politician"
-              src={`https://theunitedstates.io/images/congress/original/${props.politicianInfo.id}.jpg`}
+              src={`https://theunitedstates.io/images/congress/225x275/${props.politicianInfo.id}.jpg`}
             />
           }
         >

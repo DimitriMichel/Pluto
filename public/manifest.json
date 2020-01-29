@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "start_url": "https://pluto-beta.now.sh",
+  "start_url": "/",
   "display": "standalone",
   "theme_color": "#001428",
   "background_color": "#ffffff"

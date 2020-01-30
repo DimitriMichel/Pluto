@@ -60,7 +60,7 @@ const AssetTable = props => {
       Individuals: `$${indivs}`
     };
   });
-  console.log(props.politicianAssets[0]["@attributes"].name);
+
 
   //if props.proliticanAssets["@attributes"].name is null member had no assets and in parent components has only 1 default state.
   return (

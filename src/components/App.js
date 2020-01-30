@@ -337,7 +337,7 @@ class App extends React.Component {
         <Layout className="layout">
           <Header>
             <img src={logo} alt="logo_icon" className="logo" />
-            <SearchBar onFormSubmit={this.onTermSubmit} />
+            <SearchBar onFormSubmit={this.onTermSubmit} className="search" />
           </Header>
           <Content style={{ padding: "30px 25px" }}>
             <div style={{ background: "#fff", padding: 20, minHeight: 280 }}>
@@ -369,7 +369,10 @@ class App extends React.Component {
               <Row>
                 {this.state.isLoading ? (
                   <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                    <div className="spinner-container" style={{padding: "50px"}}>
+                    <div
+                      className="spinner-container"
+                      style={{ padding: "50px" }}
+                    >
                       <Spin className="loading-spinner" />
                     </div>
                   </Col>
@@ -385,7 +388,10 @@ class App extends React.Component {
           <Footer style={{ textAlign: "center" }}>
             Dimitri Michel © 2019
             <br />
-            Data Courtesy of ProPublica & OpenSecrets.org
+            Data Courtesy of <br />
+            <a className="footer-link" href="https://www.fec.gov/data/browse-data/?tab=candidates">
+              The Federal Election Commission
+            </a>
           </Footer>
         </Layout>
       </div>

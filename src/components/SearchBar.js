@@ -13,8 +13,8 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <div style={{ paddingTop: "18px" }}>
-        <Form>
+      <div style={{ paddingTop: "18px"}}>
+        <Form style={{textAlign: "center", paddingRight:"2.2rem"}}>
           <Search
             placeholder="Enter Congress Member"
             size="default"

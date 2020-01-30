@@ -32,6 +32,7 @@ grid is placed within library Layout
 
 class App extends React.Component {
   state = {
+    //Default state is Independent Main Senator "Angus King"
     politician: {
       crp_id: "N00034580",
       id: "K000383",

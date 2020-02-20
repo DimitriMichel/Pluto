@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/project/pluto/(.*)", "destination": "https://pluto.now.sh/$1" },
+    { "source": "/project/tide/(.*)", "destination": "https://tide.now.sh/$1" }
+  ]
+}

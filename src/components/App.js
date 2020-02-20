@@ -372,7 +372,6 @@ class App extends React.Component {
                   <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                     <div
                       className="spinner-container"
-                      style={{ padding: "50px" }}
                     >
                       <Spin className="loading-spinner" />
                     </div>

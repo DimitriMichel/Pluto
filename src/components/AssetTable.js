@@ -1,8 +1,10 @@
 import React from "react";
 import Table from "antd/es/table";
 import Col from "antd/es/col";
-
+import "antd/es/table/style/css";
+import "antd/es/col/style/css";
 const AssetTable = props => {
+  console.log(props);
   const columns = [
     {
       title: "Investment",
@@ -60,7 +62,6 @@ const AssetTable = props => {
       Individuals: `$${indivs}`
     };
   });
-
 
   //if props.proliticanAssets["@attributes"].name is null member had no assets and in parent components has only 1 default state.
   return (

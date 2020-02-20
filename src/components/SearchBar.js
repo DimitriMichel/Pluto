@@ -1,6 +1,7 @@
 import React from "react";
 import {Form, Input} from "antd"
-
+import 'antd/es/form/style/css';
+import 'antd/es/input/style/css';
 import "./main.css";
 const { Search } = Input;
 

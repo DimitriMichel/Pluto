@@ -6,7 +6,6 @@ Pluto returns congress member finances, voting data, and top political donors.
 
 ### Features
 ----------------------------------------------------------------
-----------------------------------------------------------------
 Bar Chart -
 
 <img src="https://imgur.com/71BuCUp.png"/>
@@ -25,5 +24,10 @@ Bar Chart -
 
 ----------------------------------------------------------------
 
+- Spreadsheet
+
+<img src="https://imgur.com/CCBKEhx.png"/>
+<br/>
+<br/>
 The Spreadsheet at the bottom delves into greater detail returning a candidates current investments categorized industry donors
 broken down by the individual and/or PAC (Political Action Committee) 

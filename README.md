@@ -19,7 +19,7 @@ Bar Chart -
 
 - Search Bar (w/ Fuzzy Search) & Profile Image
 
-|        "Mitt Rmsney" (spelling error)        |          Bernie Sanders (nicknames)          |     Mitch McConnell (missing characters)     |  Alexandria Ocasio-Cortez (missing dashes)   |
+|        "Mitt Romney" <br/>(spelling error)        |          Bernie Sanders (nicknames)          |     Mitch McConnell (missing characters)     |  Alexandria Ocasio-Cortez (missing dashes)   |
 | :------------------------------------------: | :------------------------------------------: | :------------------------------------------: | :------------------------------------------: |
 | <img src="https://i.imgur.com/EafbXPh.png"/> | <img src="https://i.imgur.com/o7A0vz8.png"/> | <img src="https://i.imgur.com/ZMs0guJ.png"/> | <img src="https://i.imgur.com/AMovhtk.png"/> |
 

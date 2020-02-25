@@ -64,7 +64,7 @@ form.ant-form.ant-form-horizontal {
   width: 370px;
 }
 .loading-spinner {
-  margin-top: 50% !important;
+  margin-top: 100px !important;
   margin-left: 50% !important;
 }
 .spinner-container {
